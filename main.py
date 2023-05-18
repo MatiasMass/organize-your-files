@@ -122,10 +122,7 @@ class App:
             messagebox.showerror(
                 "Error", "No folder was selected to save the files")
             return
-        # if self.button_yes_ignore_clicked == False:
-        #     messagebox.showerror(
-        #         "Error", "No se seleccionó ninguna carpeta para ignorar")
-        #     return
+        
         self.log_step("\nOrganizing files...")
         self.log_step("\n")
         self.organize_folders(self.folder_path, self.folder_path_to_save, self.folder_paths_to_ignore)
@@ -203,7 +200,6 @@ class App:
         if total_files_moved == 0:
             self.log_step("No files were moved. Everything is organized! ;)")
         else:
-            # print(f"Se movieron {total_files_moved} archivos.")
             self.log_step(f"{total_files_moved} files were moved.")
 
         self.log_step("\nEnded process.")
@@ -255,9 +251,7 @@ class App:
             return False
 
         if os.path.exists(destination_path):
-            # selected_option = self.show_overwrite_files(file_path)
             self.show_overwrite_files(file_path)
-
             if not self.button_yes_clicked:
                 return False
 
@@ -265,7 +259,6 @@ class App:
         shutil.move(file_path, destination_path)
 
         file_name = os.path.basename(file_path)
-        # print(f"El archivo {file_name} se movió a la carpeta {folder_name}")
         self.log_step(f"File {file_name} was moved to {folder_name} folder")
 
         return True
